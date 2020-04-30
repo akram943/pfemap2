@@ -12,7 +12,7 @@ class Client extends Component {
                       <div className="p-3 border bg-light">
                           <img id="myImg" src={client.image} width="100" height="100"/>
                       </div>
-                      <div>
+                      <div className="p-3">
                          <label id="txt">{client.name}</label><br/>
                          <label> {client.adresse} </label>
                       </div>

@@ -10,7 +10,7 @@ class Specialite extends Component {
 
     render() {
         return ( 
-            <select className="custom-select mr-sm-2" onChange={this.handleChange.bind(this)} >
+            <select className="custom-select ml-1" onChange={this.handleChange.bind(this)} >
                 <option defaultValue>spécialité</option>
                 {this.props.data.map(spec =>(
                     <option key={spec.id} >{spec.name}</option>

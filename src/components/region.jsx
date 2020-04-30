@@ -4,8 +4,8 @@ class Region extends Component {
     state = {  }
 
     handleChange(event){
-        //console.log("vfvfvf",event.target.value)
         this.props.changeRegion(event.target.value)
+         this.props.changeMap(event.target.value)
     }
 
     render() { 
@@ -13,7 +13,7 @@ class Region extends Component {
             <select className="custom-select mr-sm-2" onChange={this.handleChange.bind(this)}>
                 <option defaultValue>Région</option>
                {this.props.data.map(reg =>(
-                    <option key={reg.id} >{reg.name}</option>
+                    <option key={reg.id} id={reg.id} >{reg.name}</option>
                 ))}
             </select>
          );
