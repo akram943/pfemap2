@@ -7,7 +7,6 @@ import Search from './search';
 
 class Filtre extends Component {
     state = { 
-      
         specialData : [],
         regionData: [],
         clientData: [],
