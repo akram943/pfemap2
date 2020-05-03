@@ -55,6 +55,12 @@ class Filtre extends Component {
       this.props.changeMap(client[0].coordinates);
     }
 
+    handelMap1(t){
+       const client=this.state.clientData.filter(c=>c._id ==t 
+        )
+       this.props.changeMap(client[0].coordinates);
+    }
+
     render() {
          // console.log(this.state.clientData)
         return ( 
@@ -74,7 +80,11 @@ class Filtre extends Component {
                   />
                </nav>
                <button className="btn btn-outline-primary ml-3 mr-3" onClick={this.handelReset.bind(this)} >Reset</button>
-                 <Client data={this.state.filter} filter={this.state.filter}/>
+                 <Client 
+                 data={this.state.filter} 
+                 filter={this.state.filter}
+                 changeMap={this.handelMap1.bind(this)}
+                 />
             </div> 
         );
     }

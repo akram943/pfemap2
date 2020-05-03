@@ -12,8 +12,7 @@ export class MapContainer extends Component {
     showingInfoWindow: false,  
     activeMarker: {},          
     selectedPlace: {},
-    place:{ lat: 35.77799,
-      lng: 10.8233}         
+    place:this.props.position
   };
   onMarkerClick = (props, marker, e) =>
   this.setState({
@@ -29,25 +28,42 @@ export class MapContainer extends Component {
 
       }); 
     }
-    
+
   };
+
+  // componentDidMount(){
+    
+  //   if(!this.props.position)
+  //   {this.setState({place: this.props.position})}
+  //   else{this.setState({place: this.props.position})}
+  // }
+
+  
 
 
   render() {
-  //  this.setState({place: this.props.position})
+  // console.log(this.props.position)
+  // console.log(this.state.place)
+  if(this.state.place !==this.props.position)
+  {
+    this.setState({place:this.props.position})
+    
+  }
     return (
      
       <Map
         google={this.props.google}
-        zoom={9}
+        zoom={12}
         style={mapStyles}
         initialCenter={this.state.place}
+        center={this.state.place}
       >
-        
-        <Marker
-          onClick={this.onMarkerClick}
-          name={'Monastir'}
-        />
+        <Marker 
+               onClick={this.onMarkerClick}
+						   name={'Dolores park'}
+						   position={this.state.place}
+					/>
+						
          <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}

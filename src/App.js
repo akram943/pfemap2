@@ -6,15 +6,20 @@ import MapContainer from './components/map1';
 
 class App extends Component {
   state = {
-    Map:{}
+    Map:{lat: 35.77799,
+      lng: 10.8233}
   }
 
   handelMap(t){
     console.log("spéccccccc",t);
-    this.setState({Map: t});
+    this.setState({Map:{
+      lat: t.Latitude,
+			lng: t.Longitude
+    } });
   }
 
   render() {
+    console.log(this.state.Map);
     return ( 
       <div className="card-deck">
       <Filtre 
