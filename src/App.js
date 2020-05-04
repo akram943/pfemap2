@@ -11,7 +11,7 @@ class App extends Component {
   }
 
   handelMap(t){
-    console.log("spéccccccc",t);
+   // console.log("spéccccccc",t);
     this.setState({Map:{
       lat: t.Latitude,
 			lng: t.Longitude
@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.Map);
+   // console.log(this.state.Map);
     return ( 
       <div className="card-deck">
       <Filtre 

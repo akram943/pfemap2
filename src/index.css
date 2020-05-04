@@ -15,7 +15,7 @@ code {
 #myImg{
   border-radius: 70%;
 }
-#txt{
+.txt{
   color:cornflowerblue;
   /* text-align: center; */
   font-size: 20px;

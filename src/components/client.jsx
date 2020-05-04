@@ -4,7 +4,7 @@ class Client extends Component {
     state = {  }
 
     clickPos(event){
-        //console.log(event.target.id)
+       // console.log(event.target.id)
         this.props.changeMap(event.target.id)
     }
 
@@ -16,11 +16,11 @@ class Client extends Component {
                     <div key={client._id} className="card" onClick={this.clickPos.bind(this)} > 
                     <nav className="navbar navbar-expand-lg  mx-md-n5" id={client._id}>
                       <div className="p-3 border bg-light">
-                          <img id="myImg" src={client.image} width="100" height="100"/>
+                          <img id={client._id} src={client.image} width="100" height="100"/>
                       </div>
                       <div className="p-3">
-                         <label id="txt">{client.name}</label><br/>
-                         <label> {client.adresse} </label>
+                         <label className="txt" id={client._id}>{client.name}</label><br/>
+                         <label id={client._id}> {client.adresse} </label>
                       </div>
                       <button type="button" className="btn btn-primary ml-auto mr-1 ">site web</button>
                       <button type="button" className="btn btn-primary  ">site web</button>

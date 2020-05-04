@@ -7,7 +7,6 @@ import Search from './search';
 
 class Filtre extends Component {
     state = { 
-      
         specialData : [],
         regionData: [],
         clientData: [],
@@ -57,8 +56,7 @@ class Filtre extends Component {
     }
 
     handelMap1(t){
-       const client=this.state.clientData.filter(c=>c._id ==t 
-        )
+       const client=this.state.clientData.filter(c=>c._id ==t)
        this.props.changeMap(client[0].coordinates);
     }
 
