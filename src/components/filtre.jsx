@@ -51,13 +51,14 @@ class Filtre extends Component {
     }
 
     handelMap(t){
-      const client=this.state.regionData.filter(c=>c.name ===t )
-      this.props.changeMap(client[0].coordinates);
+      const region=this.state.regionData.filter(c=>c.name ===t )
+      this.props.changeMap(region[0].coordinates);
     }
 
     handelMap1(t){
        const client=this.state.clientData.filter(c=>c._id ==t)
        this.props.changeMap(client[0].coordinates);
+       this.props.chanheMarker(client[0].name);
     }
 
     render() {

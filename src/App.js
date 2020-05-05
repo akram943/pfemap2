@@ -2,20 +2,31 @@ import React, { Component } from 'react';
 import './App.css';
 import Filtre from './components/filtre';
 import MapContainer from './components/map1';
-//import 'bootstrap/dist/css/bootstrap.css';
+import AppOsm from './components/map2';
 
 class App extends Component {
   state = {
     Map:{lat: 35.77799,
-      lng: 10.8233}
-  }
+         lng: 10.8233},
+    name:"",
+    zoom:9
+    }
 
   handelMap(t){
    // console.log("spéccccccc",t);
     this.setState({Map:{
-      lat: t.Latitude,
-			lng: t.Longitude
-    } });
+                   lat: t.Latitude,
+		               lng: t.Longitude
+                   },
+                   name:"",
+                   zoom:9
+   });
+  }
+
+  handelMarker(t){
+    console.log(t);
+    this.setState({name:t,
+                  zoom:12})
   }
 
   render() {
@@ -24,9 +35,15 @@ class App extends Component {
       <div className="card-deck">
       <Filtre 
        changeMap={this.handelMap.bind(this)} 
+       chanheMarker={this.handelMarker.bind(this)}
       />
       <div className="card"> 
-      <MapContainer position={this.state.Map} />
+      <MapContainer 
+      position={this.state.Map}
+      popUp={this.state.name}
+      zoom={this.state.zoom} />
+
+      {/* <AppOsm/> */}
       </div>  
       </div>
      );

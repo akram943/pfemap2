@@ -1,27 +1,23 @@
 import React from "react";
-import { Map, Marker, Popup, TileLayer } from "react-leaflet";
-import { Icon } from "leaflet"
-import * as parkData from "./data/skateboard-parks.json";
+import { Map, Marker, Popup, TileLayer ,Control} from "react-leaflet";
+import  * as parkD from "../data/data.json";
 import "./Map2.css";
 
-export const icon = new Icon({
-  iconUrl: "/skateboarding.svg",
-  iconSize: [25, 25]
-});
 
-export default function App() {
+export default function AppOSM() {
   const [activePark, setActivePark] = React.useState(null);
 
   return (
-    <Map center={[45.4, -75.7]} zoom={12}>
+    <Map
+    center={[35.610865, 10.7]} zoom={7}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
 
-      {parkData.features.map(park => (
+      {parkD.client.map(park => (
         <Marker
-          key={park.properties.PARK_ID}
+
           position={[
             park.geometry.coordinates[1],
             park.geometry.coordinates[0]
@@ -29,7 +25,6 @@ export default function App() {
           onClick={() => {
             setActivePark(park);
           }}
-          //icon={icon}
         />
       ))}
 
@@ -44,8 +39,11 @@ export default function App() {
           }}
         >
           <div>
-            <h2>{activePark.properties.NAME}</h2>
-            <p>{activePark.properties.DESCRIPTIO}</p>
+            <h1>{activePark.name}</h1>
+            <p>{activePark.adresse} </p>
+            <p>{activePark.téléphone} </p>
+            <p>{activePark.site_web} </p>
+            
           </div>
         </Popup>
       )}

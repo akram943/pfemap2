@@ -12,7 +12,8 @@ export class MapContainer extends Component {
     showingInfoWindow: false,  
     activeMarker: {},          
     selectedPlace: {},
-    place:this.props.position
+    place:this.props.position,
+    zoom:this.props.zoom
   };
   onMarkerClick = (props, marker, e) =>
   this.setState({
@@ -31,13 +32,6 @@ export class MapContainer extends Component {
 
   };
 
-  // componentDidMount(){
-    
-  //   if(!this.props.position)
-  //   {this.setState({place: this.props.position})}
-  //   else{this.setState({place: this.props.position})}
-  // }
-
   
 
 
@@ -46,21 +40,23 @@ export class MapContainer extends Component {
   // console.log(this.state.place)
   if(this.state.place !==this.props.position)
   {
-    this.setState({place:this.props.position})
+    this.setState({place:this.props.position,
+                   zoom:this.props.zoom})
+
     
   }
     return (
      
       <Map
         google={this.props.google}
-        zoom={12}
+        zoom={this.state.zoom}
         style={mapStyles}
         initialCenter={this.state.place}
         center={this.state.place}
       >
         <Marker 
                onClick={this.onMarkerClick}
-						   name={'Dolores park'}
+						   name={this.props.popUp}
 						   position={this.state.place}
 					/>
 						
