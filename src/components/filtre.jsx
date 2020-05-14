@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import Region from './region';
-import Specialite from './specialite';
 import Client from './client';
 import axios from 'axios'
-import Search from './search';
+import NavBar from './navBar';
 
 class Filtre extends Component {
     state = { 
@@ -11,6 +9,7 @@ class Filtre extends Component {
         regionData: [],
         clientData: [],
         filter: [],
+        reset:""
      }
 
     componentDidMount(){
@@ -41,7 +40,9 @@ class Filtre extends Component {
 
     handelReset(){
       const cl=this.state.clientData
-      this.setState({filter: cl});
+      this.setState({filter: cl,
+                     reset:"Région"});
+      
     }
 
     handelSearch(t){
@@ -65,21 +66,17 @@ class Filtre extends Component {
          // console.log(this.state.clientData)
         return ( 
             <div className="card">
-               <nav className="navbar navbar-expand-lg">
-                  <Search 
-                     changeSearch={this.handelSearch.bind(this)}
-                  />
-                  <Specialite 
-                     data={this.state.specialData} 
-                     changeSpecialite={this.handelSpecialite.bind(this)}
-                  />
-                  <Region 
-                     data={this.state.regionData} 
-                     changeRegion={this.handelRegion.bind(this)} 
-                     changeMap={this.handelMap.bind(this)}
-                  />
-               </nav>
-               <button className="btn btn-outline-primary ml-3 mr-3" onClick={this.handelReset.bind(this)} >Reset</button>
+             
+               {/* <button className="btn btn-outline-primary ml-3 mr-3" onClick={this.handelReset.bind(this)} >Reset</button> */}
+               <NavBar changeSearch={this.handelSearch.bind(this)}
+                        dataSpec={this.state.specialData} 
+                        changeSpecialite={this.handelSpecialite.bind(this)}
+                        dataReg={this.state.regionData} 
+                        changeRegion={this.handelRegion.bind(this)} 
+                        changeMap={this.handelMap.bind(this)}
+                        changeReset={this.handelReset.bind(this)}
+                        reset={this.state.reset}
+                />
                  <Client 
                  data={this.state.filter} 
                  filter={this.state.filter}

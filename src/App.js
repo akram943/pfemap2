@@ -3,6 +3,7 @@ import './App.css';
 import Filtre from './components/filtre';
 import MapContainer from './components/map1';
 import AppOsm from './components/map2';
+import Map from './components/Map/Map';
 
 class App extends Component {
   state = {
@@ -33,6 +34,7 @@ class App extends Component {
    // console.log(this.state.Map);
     return ( 
       <div className="card-deck">
+
       <Filtre 
        changeMap={this.handelMap.bind(this)} 
        chanheMarker={this.handelMarker.bind(this)}
@@ -42,6 +44,8 @@ class App extends Component {
       position={this.state.Map}
       popUp={this.state.name}
       zoom={this.state.zoom} />
+
+     {/* <Map type={"OSM"}/> */}
 
       {/* <AppOsm/> */}
       </div>  
