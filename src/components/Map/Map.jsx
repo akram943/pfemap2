@@ -26,7 +26,11 @@ class Map extends Component{
     renderMap = ()=>{
 switch(this.state.type){
     case "google":
-        return(<GoogleMap/>
+        return(<GoogleMap 
+            position={this.props.position}
+            popUp={this.props.popUp}
+            zoom={this.props.zoom}
+            />
             );
 
         break;

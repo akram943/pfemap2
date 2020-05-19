@@ -25,7 +25,7 @@ class App extends Component {
   }
 
   handelMarker(t){
-    console.log(t);
+    //console.log(t);
     this.setState({name:t,
                   zoom:12})
   }
@@ -40,12 +40,17 @@ class App extends Component {
        chanheMarker={this.handelMarker.bind(this)}
       />
       <div className="card"> 
-      <MapContainer 
+      {/* <MapContainer 
       position={this.state.Map}
       popUp={this.state.name}
-      zoom={this.state.zoom} />
+      zoom={this.state.zoom} /> */}
 
-     {/* <Map type={"OSM"}/> */}
+     <Map 
+      type={"google"}
+      position={this.state.Map}
+      popUp={this.state.name}
+      zoom={this.state.zoom}
+     />
 
       {/* <AppOsm/> */}
       </div>  
