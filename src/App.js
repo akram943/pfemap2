@@ -40,19 +40,14 @@ class App extends Component {
        chanheMarker={this.handelMarker.bind(this)}
       />
       <div className="card"> 
-      {/* <MapContainer 
-      position={this.state.Map}
-      popUp={this.state.name}
-      zoom={this.state.zoom} /> */}
 
      <Map 
-      type={"google"}
+      type={"OSM"}
       position={this.state.Map}
       popUp={this.state.name}
       zoom={this.state.zoom}
      />
 
-      {/* <AppOsm/> */}
       </div>  
       </div>
      );

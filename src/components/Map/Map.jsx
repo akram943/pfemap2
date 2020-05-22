@@ -36,7 +36,11 @@ switch(this.state.type){
         break;
 
     case "OSM":
-        return(<OSM/>
+        return(<OSM
+            position={this.props.position}
+            popUp={this.props.popUp}
+            zoom={this.props.zoom}
+        />
             );
 
         break;

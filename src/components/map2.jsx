@@ -1,52 +1,63 @@
-import React from "react";
+import React, { Component } from 'react';
 import { Map, Marker, Popup, TileLayer ,Control} from "react-leaflet";
-import  * as parkD from "../data/data.json";
 import "./Map2.css";
 
+class AppOSM extends Component {
+  state={
+    selectedPlace: {},
+    showingInfoWindow: false,  
+    place:this.props.position,
+    zoom:this.props.zoom
+  }
+ 
+  render() { 
+    // console.log(this.state.place)
+    // console.log(this.state.zoom)
+    if(this.state.place !==this.props.position)
+    {
+      this.setState({place:this.props.position,
+                     zoom:this.props.zoom})
+    }
+    return ( 
+      <Map
+      center={this.state.place} zoom={this.state.zoom}>
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        /> 
 
-export default function AppOSM() {
-  const [activePark, setActivePark] = React.useState(null);
-
-  return (
-    <Map
-    center={[35.610865, 10.7]} zoom={7}>
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-      />
-
-      {parkD.client.map(park => (
         <Marker
-
-          position={[
-            park.geometry.coordinates[1],
-            park.geometry.coordinates[0]
-          ]}
-          onClick={() => {
-            setActivePark(park);
-          }}
+            position={this.state.place}
+            onClick={(props) => {
+              this.setState({
+                showingInfoWindow:true,
+                selectedPlace: props
+              })
+            }}
         />
-      ))}
 
-      {activePark && (
+       {this.state.showingInfoWindow && (  
         <Popup
-          position={[
-            activePark.geometry.coordinates[1],
-            activePark.geometry.coordinates[0]
-          ]}
-          onClose={() => {
-            setActivePark(null);
-          }}
+            position={this.state.place}
+            visible={this.state.showingInfoWindow}
+            onClose={() => {
+              this.setState({showingInfoWindow:false})
+            }}
         >
-          <div>
-            <h1>{activePark.name}</h1>
-            <p>{activePark.adresse} </p>
-            <p>{activePark.téléphone} </p>
-            <p>{activePark.site_web} </p>
-            
-          </div>
+            <div>
+              <h1>{this.props.popUp}</h1>
+              {/* <p>{this.state.activePark.adresse} </p>
+              <p>{this.state.activePark.téléphone} </p>
+              <p>{this.state.activePark.site_web} </p> */}
+              
+            </div>
         </Popup>
-      )}
-    </Map>
-  );
+         )}
+      </Map>
+     );
+  }
 }
+ 
+export default AppOSM ;
+
+

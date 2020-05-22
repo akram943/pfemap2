@@ -4,7 +4,7 @@ class Client extends Component {
     state = {  }
 
     clickPos(event){
-        console.log(event.target)
+       // console.log(event.target)
         this.props.changeMap(event.target.id)
     }
 
@@ -22,7 +22,9 @@ class Client extends Component {
                          <label className="txt" id={client._id}>{client.name}</label><br/>
                          <label id={client._id}> {client.adresse} </label>
                       </div>
+                      <a href={client.site_web} target="_blank" >
                       <button type="button" className="btn btn-primary ml-auto mr-1 " id={client._id}>site web</button>
+                      </a>
                       <button type="button" className="btn btn-primary" id={client._id}>itineraire</button>
                    </nav>
                    </div>

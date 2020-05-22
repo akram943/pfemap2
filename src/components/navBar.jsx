@@ -29,7 +29,7 @@ class NavBar extends Component {
        this.props.changeReset()
        this.setState({valueReg:"Région",
                       valueSpec:"spécialité"})
-       console.log(this.state.valueReg)
+      // console.log(this.state.valueReg)
       }
 
     render() { 

@@ -42,8 +42,6 @@ export class MapContainer extends Component {
   {
     this.setState({place:this.props.position,
                    zoom:this.props.zoom})
-
-    
   }
     return (
      

@@ -5,6 +5,10 @@ import AppOsm from '../map2';
 export default class OSM extends Component{
     render()
     {return(
-        <AppOsm/>
+        <AppOsm
+        position={this.props.position}
+        popUp={this.props.popUp}
+        zoom={this.props.zoom}
+        />
     )}
 }
