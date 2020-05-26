@@ -5,6 +5,10 @@ import {Button, Modal } from "react-bootstrap";
 class Client extends Component {
     state = { 
         visible:false,
+        name:"",
+        adresse:"",
+        téléphone:"",
+        siteWeb:""
      }
 
     clickPos(event){
@@ -18,11 +22,22 @@ class Client extends Component {
         })
       }
       open= (e) => {
-        if(e.target.value==="")
-       { this.setState({
+        console.log(e.target.id)
+        const client = this.props.data.filter(c=>c._id ==e.target.id);
+        console.log(client[0])
+        this.setState({
         visible:true,
-      })}
+        name:client[0].name,
+        adresse:client[0].adresse,
+        téléphone:client[0].téléphone,
+        siteWeb:client[0].site_web,
+      })
        
+      }
+
+      handelAlert(){
+        alert('cet emplacement ne contient pas un site web!');
+    
       }
 
     render() { 
@@ -39,9 +54,8 @@ class Client extends Component {
                          <label className="txt" id={client._id}>{client.name}</label><br/>
                          <label id={client._id}> {client.adresse} </label>
                       </div>
-                      <a href={client.site_web} target="_blank" >
-                      <button type="button" onClick={this.open.bind(this)} className="btn btn-primary ml-auto mr-1 " value={client.site_web} id={client._id}>site web</button>
-                      </a>
+
+                      <button type="button" onClick={this.open.bind(this)} className="btn btn-primary ml-auto mr-1 " value={client.site_web} id={client._id}>More info</button>
                       <button type="button" className="btn btn-primary" id={client._id}>itineraire</button>
 
                   
@@ -50,10 +64,22 @@ class Client extends Component {
                 ))}
                     <Modal show={this.state.visible} onHide={this.close}>
         <Modal.Header closeButton>
-          <Modal.Title>More informations </Modal.Title>
+          <Modal.Title>{this.state.name} </Modal.Title>
         </Modal.Header>
-        <Modal.Body>informations</Modal.Body>
+        <Modal.Body>
+                 <p>{this.state.adresse}</p>
+                 <p>{this.state.téléphone}</p>
+        </Modal.Body>
         <Modal.Footer>
+          
+      {this.state.siteWeb
+      ? <a href={this.state.siteWeb} target="_blank" >
+        <Button variant="outline-primary">
+        web site
+          </Button>
+          </a>
+        : <Button variant="outline-primary" onClick={this.handelAlert.bind()}>web site</Button> 
+        }
           <Button variant="secondary" onClick={this.close}>
             Close
           </Button>
