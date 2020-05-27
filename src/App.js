@@ -10,7 +10,8 @@ class App extends Component {
     Map:{lat: 35.77799,
          lng: 10.8233},
     name:"",
-    zoom:9
+    zoom:7,
+    visible:false
     }
 
   handelMap(t){
@@ -20,14 +21,25 @@ class App extends Component {
 		               lng: t.Longitude
                    },
                    name:"",
-                   zoom:9
+                   zoom:9,
+                   visible:false
    });
   }
 
   handelMarker(t){
     //console.log(t);
     this.setState({name:t,
-                  zoom:12})
+                  zoom:12,
+                  visible:true})
+  }
+
+  handelReset(t){
+    // console.log(t);
+    this.setState({Map:{lat: 35.77799,
+                        lng: 10.8233},
+                   zoom:t,
+                   visible:false
+    })
   }
 
   render() {
@@ -37,15 +49,17 @@ class App extends Component {
 
       <Filtre 
        changeMap={this.handelMap.bind(this)} 
-       chanheMarker={this.handelMarker.bind(this)}
+       changeMarker={this.handelMarker.bind(this)}
+       changeReset={this.handelReset.bind(this)}
       />
       <div className="card"> 
 
      <Map 
-      type={"OSM"}
+      type={"google"}
       position={this.state.Map}
       popUp={this.state.name}
       zoom={this.state.zoom}
+      visible={this.state.visible}
      />
 
       </div>  

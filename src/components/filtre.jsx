@@ -42,7 +42,7 @@ class Filtre extends Component {
       const cl=this.state.clientData
       this.setState({filter: cl,
                      reset:"Région"});
-      
+      this.props.changeReset(7);
     }
 
     handelSearch(t){
@@ -58,8 +58,9 @@ class Filtre extends Component {
 
     handelMap1(t){
        const client=this.state.clientData.filter(c=>c._id ==t)
+       console.log(client)
        this.props.changeMap(client[0].coordinates);
-       this.props.chanheMarker(client[0].name);
+       this.props.changeMarker(client[0].name);
     }
 
     render() {

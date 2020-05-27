@@ -55,7 +55,8 @@ export class MapContainer extends Component {
         <Marker 
                onClick={this.onMarkerClick}
 						   name={this.props.popUp}
-						   position={this.state.place}
+               position={this.state.place}
+               visible={this.props.visible}
 					/>
 						
          <InfoWindow

@@ -30,6 +30,7 @@ switch(this.state.type){
             position={this.props.position}
             popUp={this.props.popUp}
             zoom={this.props.zoom}
+            visible={this.props.visible}
             />
             );
 

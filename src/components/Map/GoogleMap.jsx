@@ -7,6 +7,8 @@ export default class GoogleMap extends Component{
         <MapContainer 
             position={this.props.position}
             popUp={this.props.popUp}
-            zoom={this.props.zoom} />
+            zoom={this.props.zoom}
+            visible={this.props.visible} 
+            />
         )}
 }

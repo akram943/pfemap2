@@ -22,7 +22,7 @@ class Client extends Component {
         })
       }
       open= (e) => {
-        console.log(e.target.id)
+        //console.log(e.target.id)
         const client = this.props.data.filter(c=>c._id ==e.target.id);
         console.log(client[0])
         this.setState({
@@ -47,7 +47,7 @@ class Client extends Component {
                  {this.props.data.map(client =>(
                     <div key={client._id} className="card" onClick={this.clickPos.bind(this)} > 
                     <nav className="navbar navbar-expand-lg  mx-md-n5" id={client._id}>
-                      <div className="p-3 border bg-light">
+                      <div className="p-3 border bg-light" id={client._id}>
                           <img id={client._id} src={client.image} width="100" height="100"/>
                       </div>
                       <div className="p-3" id={client._id}>
