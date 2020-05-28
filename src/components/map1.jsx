@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper } from 'google-maps-react';
-import {InfoWindow, Marker } from 'google-maps-react';
+import {InfoWindow, Marker,Polygon } from 'google-maps-react';
 
 const mapStyles = {
   width: '100%',
@@ -36,13 +36,15 @@ export class MapContainer extends Component {
 
 
   render() {
-  // console.log(this.props.position)
+  // console.log(this.props.positionPoly)
   // console.log(this.state.place)
   if(this.state.place !==this.props.position)
   {
     this.setState({place:this.props.position,
                    zoom:this.props.zoom})
   }
+  var triangleCoords =this.props.positionPoly
+    
     return (
      
       <Map
@@ -52,11 +54,21 @@ export class MapContainer extends Component {
         initialCenter={this.state.place}
         center={this.state.place}
       >
+
+      {this.props.visiblePoly && (<Polygon
+          paths={triangleCoords}
+          strokeColor="#0000FF"
+          strokeOpacity={0.8}
+          strokeWeight={2}
+          fillColor="#0000FF"
+          fillOpacity={0.35}
+           />)}
+
         <Marker 
                onClick={this.onMarkerClick}
 						   name={this.props.popUp}
                position={this.state.place}
-               visible={this.props.visible}
+               visible={this.props.visibleMarker}
 					/>
 						
          <InfoWindow

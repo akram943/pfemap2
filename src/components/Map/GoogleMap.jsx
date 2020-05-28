@@ -8,7 +8,9 @@ export default class GoogleMap extends Component{
             position={this.props.position}
             popUp={this.props.popUp}
             zoom={this.props.zoom}
-            visible={this.props.visible} 
+            visibleMarker={this.props.visibleMarker} 
+            positionPoly={this.props.positionPoly}
+            visiblePoly={this.props.visiblePoly}
             />
         )}
 }

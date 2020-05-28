@@ -58,9 +58,18 @@ class Filtre extends Component {
 
     handelMap1(t){
        const client=this.state.clientData.filter(c=>c._id ==t)
-       console.log(client)
-       this.props.changeMap(client[0].coordinates);
-       this.props.changeMarker(client[0].name);
+       console.log(client[0].geometry)
+       if(client[0].geometry.type==="Point")
+       {
+       // console.log(client[0].geometry.coordinates[0])
+        this.props.changeMap(client[0].geometry.coordinates[0]);
+        this.props.changeMarker(client[0].name);
+       }
+       else{
+        console.log(client[0].geometry.coordinates[0])
+        this.props.changeMap(client[0].geometry.coordinates[0]);
+        this.props.changePoly(client[0].geometry.coordinates)
+       }
     }
 
     render() {
