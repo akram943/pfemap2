@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Client from './client';
 import axios from 'axios'
 import NavBar from './navBar';
+import ReactScrollbar from 'react-scrollbar';
 
 class Filtre extends Component {
     state = { 
@@ -74,7 +75,12 @@ class Filtre extends Component {
 
     render() {
          // console.log(this.state.clientData)
+         const myScrollbar = {
+          width: 700,
+          height: 700,
+        };
         return ( 
+          <ReactScrollbar style={myScrollbar}>
             <div className="card">
              
                {/* <button className="btn btn-outline-primary ml-3 mr-3" onClick={this.handelReset.bind(this)} >Reset</button> */}
@@ -93,6 +99,7 @@ class Filtre extends Component {
                  changeMap={this.handelMap1.bind(this)}
                  />
             </div> 
+            </ReactScrollbar>
         );
     }
 }

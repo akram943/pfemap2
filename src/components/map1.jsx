@@ -4,7 +4,7 @@ import {InfoWindow, Marker,Polygon } from 'google-maps-react';
 
 const mapStyles = {
   width: '100%',
-  height: '100vh',
+  height: '95vh',
 };
 
 export class MapContainer extends Component {
