@@ -8,7 +8,10 @@ class Client extends Component {
         name:"",
         adresse:"",
         téléphone:"",
-        siteWeb:""
+        siteWeb:"",
+        category:"",
+        image:"",
+        wifi:""
      }
 
     clickPos(event){
@@ -31,6 +34,9 @@ class Client extends Component {
         adresse:client[0].adresse,
         téléphone:client[0].téléphone,
         siteWeb:client[0].site_web,
+        category:client[0].category,
+        image:client[0].image2,
+        wifi:client[0].wifi
       })
        
       }
@@ -64,11 +70,24 @@ class Client extends Component {
                 ))}
                     <Modal show={this.state.visible} onHide={this.close}>
         <Modal.Header closeButton>
-          <Modal.Title>{this.state.name} </Modal.Title>
+          <Modal.Title>
+          {/* <img className="mr-3 bd-highlight" src={this.state.image} width="70" height="70"/> */}
+            {this.state.name}
+             </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-                 <p>{this.state.adresse}</p>
-                 <p>{this.state.téléphone}</p>
+                 <div className="d-flex bd-highlight mb-3">
+                 <div className="mr-auto p-2 bd-highlight">
+                      <h6>{this.state.category}</h6>
+                      <p>{this.state.adresse}</p>
+                      {this.state.téléphone}
+                  </div>
+                 {this.state.wifi=="true"
+                  ?  <img className="p-2 bd-highlight" src="https://cdn1.iconfinder.com/data/icons/social-messaging-ui-color/254000/09-512.png" width="50" height="50"/>
+                  :<img className="p-2 bd-highlight" src="https://cdn0.iconfinder.com/data/icons/device-22/24/wifi-off-512.png" width="50" height="50"/>
+                  }
+                 </div>
+                 <img className="ml-auto" src={this.state.image} width="300" height="100"/>
         </Modal.Body>
         <Modal.Footer>
           
