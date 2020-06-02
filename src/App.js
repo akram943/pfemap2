@@ -13,8 +13,14 @@ class App extends Component {
     name:"",
     zoom:7,
     visibleMarker:false,
-    visiblePoly:false
+    visiblePoly:false,
+    type:""
     }
+
+  handelMapType(props){
+   //console.log(props)
+   this.setState({type:props});
+  }
 
   handelMap(t){
    // console.log("spéccccccc",t);
@@ -48,7 +54,7 @@ class App extends Component {
   }
 
   handelPoly(p){
-    console.log(p)
+   // console.log(p)
     this.setState({
       polygon:p,
       zoom:10,
@@ -58,12 +64,12 @@ class App extends Component {
   }
 
   render() {
-    //console.log(this.state.visiblePoly);
+    // console.log(this.state.type);
     return ( 
       <div className="card-deck">
 
       <Filtre 
-       
+       mapType={this.handelMapType.bind(this)}
        changeMap={this.handelMap.bind(this)} 
        changeMarker={this.handelMarker.bind(this)}
        changeReset={this.handelReset.bind(this)}
@@ -72,7 +78,7 @@ class App extends Component {
       <div className="card"> 
 
      <Map 
-      type={"google"}
+      type={this.state.type}
       position={this.state.Map}
       popUp={this.state.name}
       zoom={this.state.zoom}

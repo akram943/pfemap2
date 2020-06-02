@@ -10,11 +10,11 @@ class Filtre extends Component {
         regionData: [],
         clientData: [],
         filter: [],
-        reset:""
+        reset:"",
+        map:""
      }
 
     componentDidMount(){
-        // console.log(1)
         axios.get('https://raw.githubusercontent.com/akram943/json-formatter/master/goe1.7.5')   
         .then(res=>{
          // console.log(res.data);
@@ -23,8 +23,11 @@ class Filtre extends Component {
             regionData: res.data.region,
             clientData: res.data.client,
             filter:res.data.client,
-          })
+            map:res.data.map
+          });
+          this.props.mapType(res.data.map);
         }) 
+        
       }
 
     handelSpecialite(t){
@@ -59,7 +62,7 @@ class Filtre extends Component {
 
     handelMap1(t){
        const client=this.state.clientData.filter(c=>c._id ==t)
-       console.log(client[0].geometry)
+       //console.log(client[0].geometry)
        if(client[0].geometry.type==="Point")
        {
        // console.log(client[0].geometry.coordinates[0])
@@ -67,7 +70,7 @@ class Filtre extends Component {
         this.props.changeMarker(client[0].name);
        }
        else{
-        console.log(client[0].geometry.coordinates[0])
+        //console.log(client[0].geometry.coordinates[0])
         this.props.changeMap(client[0].geometry.coordinates[0]);
         this.props.changePoly(client[0].geometry.coordinates)
        }
@@ -77,7 +80,7 @@ class Filtre extends Component {
          // console.log(this.state.clientData)
          const myScrollbar = {
           width: 700,
-          height: 700,
+          height: 600,
         };
         return ( 
           <ReactScrollbar style={myScrollbar}>

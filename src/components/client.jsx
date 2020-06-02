@@ -11,7 +11,9 @@ class Client extends Component {
         siteWeb:"",
         category:"",
         image:"",
-        wifi:""
+        wifi:"",
+        parking:"",
+        fumeur:""
      }
 
     clickPos(event){
@@ -27,7 +29,7 @@ class Client extends Component {
       open= (e) => {
         //console.log(e.target.id)
         const client = this.props.data.filter(c=>c._id ==e.target.id);
-        console.log(client[0])
+       // console.log(client[0].option)
         this.setState({
         visible:true,
         name:client[0].name,
@@ -36,7 +38,9 @@ class Client extends Component {
         siteWeb:client[0].site_web,
         category:client[0].category,
         image:client[0].image2,
-        wifi:client[0].wifi
+        wifi:client[0].option.wifi,
+        parking:client[0].option.parking,
+        fumeur:client[0].option.fumeur
       })
        
       }
@@ -82,10 +86,24 @@ class Client extends Component {
                       <p>{this.state.adresse}</p>
                       {this.state.téléphone}
                   </div>
+                  <div class="p-2 bd-highlight">
                  {this.state.wifi=="true"
-                  ?  <img className="p-2 bd-highlight" src="https://cdn1.iconfinder.com/data/icons/social-messaging-ui-color/254000/09-512.png" width="50" height="50"/>
-                  :<img className="p-2 bd-highlight" src="https://cdn0.iconfinder.com/data/icons/device-22/24/wifi-off-512.png" width="50" height="50"/>
+                  ?  <img className="bd-highlight" src="https://cdn1.iconfinder.com/data/icons/social-messaging-ui-color/254000/09-512.png" width="45" height="40"/>
+                  :<img className="bd-highlight" src="https://cdn0.iconfinder.com/data/icons/device-22/24/wifi-off-512.png" width="30" height="30"/>
                   }
+                  </div>
+                  <div class="p-2 bd-highlight">
+                  {this.state.fumeur=="true"
+                  ? <img className="ml-auto" src="https://thumbs.dreamstime.com/z/signe-de-zone-fumeur-3315668.jpg" width="45" height="45"/>
+                  : <img className="ml-auto" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/No_smoking_symbol.svg/1200px-No_smoking_symbol.svg.png" width="50" height="35"/>
+                }
+                  </div>
+                  <div class="p-2 bd-highlight">
+                  {this.state.parking=="true"
+                  ? <img className="ml-auto" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSaW-tfsCIi3lHuiuXDV3QQP-qgBwyj4eGBpSy4A8X-AXCYGp8X&usqp=CAU" width="50" height="35"/>
+                  : <img className="ml-auto" src="https://cdn3.iconfinder.com/data/icons/road-sing/512/Forbidden_no_park_sing_no_parking_sign_road_sign-512.png" width="50" height="35"/>
+                }
+                  </div>
                  </div>
                  <img className="ml-auto" src={this.state.image} width="300" height="100"/>
         </Modal.Body>

@@ -64,6 +64,11 @@ switch(this.state.type){
 
 
 render(){
+    if(this.state.type !==this.props.type)
+    {
+      this.setState({type:this.props.type})
+    }
+
 return(<p>
     {this.renderMap()}
     </p>)
