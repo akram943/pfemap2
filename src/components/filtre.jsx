@@ -21,8 +21,8 @@ class Filtre extends Component {
           this.setState({
             specialData: res.data.spécialité,
             regionData: res.data.region,
-            clientData: res.data.client,
-            filter:res.data.client,
+            clientData: res.data.emplacement,
+            filter:res.data.emplacement,
             map:res.data.map
           });
           this.props.mapType(res.data.map);
