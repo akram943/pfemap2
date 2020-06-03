@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Button, Modal } from "react-bootstrap";
 
-class Client extends Component {
+class Emplacement extends Component {
     state = { 
         visible:false,
         name:"",
@@ -129,4 +129,4 @@ class Client extends Component {
     }
 }
  
-export default Client;
+export default Emplacement;

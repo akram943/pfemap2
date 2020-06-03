@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Client from './client';
+import Emplacement from './emplacement';
 import axios from 'axios'
 import NavBar from './navBar';
 import ReactScrollbar from 'react-scrollbar';
@@ -96,7 +96,7 @@ class Filtre extends Component {
                         changeReset={this.handelReset.bind(this)}
                         reset={this.state.reset}
                 />
-                 <Client 
+                 <Emplacement 
                  data={this.state.filter} 
                  filter={this.state.filter}
                  changeMap={this.handelMap1.bind(this)}
