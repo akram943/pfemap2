@@ -62,12 +62,12 @@ class Filtre extends Component {
 
     handelMap1(t){
        const client=this.state.clientData.filter(c=>c._id ==t)
-       //console.log(client[0].geometry)
+       //console.log(client[0])
        if(client[0].geometry.type==="Point")
        {
        // console.log(client[0].geometry.coordinates[0])
         this.props.changeMap(client[0].geometry.coordinates[0]);
-        this.props.changeMarker(client[0].name);
+        this.props.changeMarker(client[0]);
        }
        else{
         //console.log(client[0].geometry.coordinates[0])

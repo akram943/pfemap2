@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper } from 'google-maps-react';
 import {InfoWindow, Marker,Polygon } from 'google-maps-react';
+import Offre from './offre'
 
 const mapStyles = {
   width: '100%',
@@ -16,11 +17,12 @@ export class MapContainer extends Component {
     zoom:this.props.zoom
   };
   onMarkerClick = (props, marker, e) =>
+ { //console.log(props);
   this.setState({
     selectedPlace: props,
     activeMarker: marker,
     showingInfoWindow: true
-  });
+  });}
   onClose = props => {
     if (this.state.showingInfoWindow) {
       this.setState({
@@ -66,7 +68,7 @@ export class MapContainer extends Component {
 
         <Marker 
                onClick={this.onMarkerClick}
-						   name={this.props.popUp}
+               name={this.props.popUp.name}
                position={this.state.place}
                visible={this.props.visibleMarker}
 					/>
@@ -76,9 +78,13 @@ export class MapContainer extends Component {
           visible={this.state.showingInfoWindow}
           onClose={this.onClose}
         >
-          <div>
+
+         {this.props.visibleMarker&& <div>
             <h4>{this.state.selectedPlace.name}</h4>
-          </div>
+            <Offre 
+               offre={this.props.popUp.offre}
+            />
+          </div>}
         </InfoWindow>
       </Map>
     );

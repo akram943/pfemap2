@@ -36,7 +36,7 @@ class App extends Component {
   }
 
   handelMarker(t){
-    //console.log(t);
+   // console.log(t);
     this.setState({name:t,
                   zoom:12,
                   visiblePoly:false,
