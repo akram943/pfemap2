@@ -43,6 +43,9 @@ switch(this.state.type){
             position={this.props.position}
             popUp={this.props.popUp}
             zoom={this.props.zoom}
+            visibleMarker={this.props.visibleMarker}
+            positionPoly={this.props.positionPoly}
+            visiblePoly={this.props.visiblePoly}
         />
             );
 

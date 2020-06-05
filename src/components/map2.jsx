@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Map, Marker, Popup, TileLayer ,Control} from "react-leaflet";
+import { Map, Marker, Popup, TileLayer ,Control,Polygon} from "react-leaflet";
 import "./Map2.css";
+import Offre from './offre'
 
 class AppOSM extends Component {
   state={
@@ -12,12 +13,13 @@ class AppOSM extends Component {
  
   render() { 
     // console.log(this.state.place)
-    // console.log(this.state.zoom)
+    // console.log(this.props.positionPoly)
     if(this.state.place !==this.props.position)
     {
       this.setState({place:this.props.position,
                      zoom:this.props.zoom})
     }
+    var triangleCoords =this.props.positionPoly
     return ( 
       <Map
       center={this.state.place} zoom={this.state.zoom}>
@@ -25,7 +27,7 @@ class AppOSM extends Component {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         /> 
-
+       {this.props.visibleMarker && ( 
         <Marker
             position={this.state.place}
             onClick={(props) => {
@@ -35,20 +37,30 @@ class AppOSM extends Component {
               })
             }}
         />
+        )}
+        {this.props.visiblePoly && (
+        <Polygon
+        positions={triangleCoords}
+          strokeColor="#0000FF"
+          strokeOpacity={0.8}
+          strokeWeight={2}
+          fillColor="#0000FF"
+          fillOpacity={0.35}
+           />
+        )}
 
        {this.state.showingInfoWindow && (  
         <Popup
             position={this.state.place}
-            visible={this.state.showingInfoWindow}
             onClose={() => {
               this.setState({showingInfoWindow:false})
             }}
         >
             <div>
-              <h1>{this.props.popUp}</h1>
-              {/* <p>{this.state.activePark.adresse} </p>
-              <p>{this.state.activePark.téléphone} </p>
-              <p>{this.state.activePark.site_web} </p> */}
+              <h1>{this.props.popUp.name}</h1>
+              <Offre 
+               offre={this.props.popUp.offre}
+            />
               
             </div>
         </Popup>
