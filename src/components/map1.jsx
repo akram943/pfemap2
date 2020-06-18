@@ -14,7 +14,7 @@ export class MapContainer extends Component {
     activeMarker: {},          
     selectedPlace: {},
     place:this.props.position,
-    zoom:this.props.zoom
+    zoom:this.props.zoom,
   };
   onMarkerClick = (props, marker, e) =>
  { //console.log(props);
@@ -38,15 +38,15 @@ export class MapContainer extends Component {
 
 
   render() {
-  // console.log(this.props.positionPoly)
+   
   // console.log(this.state.place)
+
   if(this.state.place !==this.props.position)
   {
     this.setState({place:this.props.position,
                    zoom:this.props.zoom})
   }
   var triangleCoords =this.props.positionPoly
-    
     return (
      
       <Map
@@ -88,9 +88,10 @@ export class MapContainer extends Component {
         </InfoWindow>
       </Map>
     );
+    //'AIzaSyBWTRixOORXDjHIsYpAHi0STk6LXXGrUbM'
   }
 }
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyBWTRixOORXDjHIsYpAHi0STk6LXXGrUbM'
+  apiKey: window.key
 })(MapContainer);

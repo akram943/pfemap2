@@ -38,23 +38,25 @@ class NavBar extends Component {
             <div>
             <nav className="navbar navbar-expand-lg">
             <input 
+               id="search"
                className="form-control" 
                type="search" 
                placeholder="Search" 
                onChange={this.upDateSearch.bind(this)} 
             />
-            <select className="custom-select ml-1" value={this.state.valueSpec} onChange={this.handleChangeSpec.bind(this)} >
-                <option defaultValue>spécialité</option>
+           {window.filtre1&& <select className="custom-select ml-1" value={this.state.valueSpec} onChange={this.handleChangeSpec.bind(this)} >
+        <option defaultValue>{window.filtre1}</option>
                 {this.props.dataSpec.map(spec =>(
                     <option key={spec.id} >{spec.name}</option>
                 ))}
-            </select>
-            <select className="custom-select mr-sm-2" value={this.state.valueReg} onChange={this.handleChange.bind(this)}>
-                <option>Région</option>
+            </select>}
+
+            {window.filtre2&&<select className="custom-select mr-sm-2" value={this.state.valueReg} onChange={this.handleChange.bind(this)}>
+                <option>{window.filtre2}</option>
                {this.props.dataReg.map(reg =>(
                     <option key={reg.id} id={reg.id} >{reg.name}</option>
                 ))}
-            </select>
+            </select>}
             </nav>
             </div>
             <div>

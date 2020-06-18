@@ -15,7 +15,9 @@ class Filtre extends Component {
      }
 
     componentDidMount(){
-        axios.get('https://raw.githubusercontent.com/akram943/json-formatter/master/goe1.7.5')   
+      console.log (window.url);
+     // 'https://raw.githubusercontent.com/akram943/json-formatter/master/goe1.7.5'
+        axios.get(window.url)   
         .then(res=>{
          // console.log(res.data);
           this.setState({
@@ -25,7 +27,7 @@ class Filtre extends Component {
             filter:res.data.emplacement,
             map:res.data.map
           });
-          this.props.mapType(res.data.map);
+         // this.props.mapType(res.data.map);
         }) 
         
       }

@@ -20,7 +20,7 @@ class App extends Component {
   handelMapType(props){
    //console.log(props)
    this.setState({type:props});
-  }
+  } 
 
   handelMap(t){
    // console.log("spéccccccc",t);
@@ -65,11 +65,15 @@ class App extends Component {
 
   render() {
     // console.log(this.state.type);
+    // console.log (window.currentTime);
+    // console.log (window.key);
+    console.log (window.url);
+    console.log (window.filtre);
     return ( 
       <div className="card-deck">
 
       <Filtre 
-       mapType={this.handelMapType.bind(this)}
+      //  mapType={this.handelMapType.bind(this)}
        changeMap={this.handelMap.bind(this)} 
        changeMarker={this.handelMarker.bind(this)}
        changeReset={this.handelReset.bind(this)}
@@ -78,7 +82,7 @@ class App extends Component {
       <div className="card"> 
 
      <Map 
-      type={this.state.type}
+      type={window.currentTime}
       position={this.state.Map}
       popUp={this.state.name}
       zoom={this.state.zoom}

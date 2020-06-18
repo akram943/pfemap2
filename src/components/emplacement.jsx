@@ -45,11 +45,6 @@ class Emplacement extends Component {
        
       }
 
-      handelAlert(){
-        alert('cet emplacement ne contient pas un site web!');
-    
-      }
-
     render() { 
        // console.log(this.props.data)
         return ( 
@@ -115,7 +110,7 @@ class Emplacement extends Component {
         web site
           </Button>
           </a>
-        : <Button variant="outline-primary" onClick={this.handelAlert.bind()}>web site</Button> 
+        : <Button variant="outline-primary">web site</Button> 
         }
           <Button variant="secondary" onClick={this.close}>
             Close
