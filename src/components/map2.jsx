@@ -20,7 +20,7 @@ class AppOSM extends Component {
                      zoom:this.props.zoom})
     }
     var triangleCoords =this.props.positionPoly
-    return ( 
+    return ( <div className="mapStyles">
       <Map
       center={this.state.place} zoom={this.state.zoom}>
         <TileLayer
@@ -66,6 +66,7 @@ class AppOSM extends Component {
         </Popup>
          )}
       </Map>
+      </div>
      );
   }
 }
