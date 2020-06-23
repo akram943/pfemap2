@@ -82,7 +82,7 @@ class App extends Component {
       <div className="card"> 
 
      <Map 
-      type={window.currentTime}
+      type="OSM"
       position={this.state.Map}
       popUp={this.state.name}
       zoom={this.state.zoom}

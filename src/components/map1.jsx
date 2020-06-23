@@ -71,6 +71,10 @@ export class MapContainer extends Component {
                name={this.props.popUp.name}
                position={this.state.place}
                visible={this.props.visibleMarker}
+               icon={{
+                url: window.icon,
+                scaledSize: { width: 40, height: 40 }
+              }}
 					/>
 						
          <InfoWindow
